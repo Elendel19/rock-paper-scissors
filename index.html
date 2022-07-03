@@ -12,6 +12,7 @@
         let computerScore = 0;
         let computerPick = "";
         
+        
         //Random roll for computer pick
         function computerPlay() {    
             let randomRoll = Math.floor(Math.random() * 3) + 1;
@@ -68,10 +69,20 @@
             }
 
         }
+        
         //Play!
-        function playGame(playerPick) {
+       let playerPick = ""
+        function playGame() {
+            playerPick = prompt("Rock, Paper or Scissors?")
             computerPlay();
             checkWin(playerPick);
+        }
+
+        function fiveRounds() {
+            
+            for (let i = 0; i < 5; i++) {
+                playGame(playerPick);
+            }
         }
     </script>
 </body>
