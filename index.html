@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+        let computerPick = "";
+        function computerPlay() {
+            
+            let randomRoll = Math.floor(Math.random() * 3) + 1;
+            if (randomRoll === 1) {
+                computerPick = "Rock";
+            } else if (randomRoll === 2) {
+                computerPick = "Paper";
+            } else if (randomRoll === 3) {
+                computerPick = "Scissors"
+            } 
+            return computerPick;
+        };
+
+        function checkWin(playerPick) {
+            
+            let lowerCasePick = playerPick.toLowerCase();
+            let result = lowerCasePick.charAt(0).toUpperCase() + lowerCasePick.slice(1);
+            switch (lowerCasePick) {
+                case "rock": 
+                if (computerPick === "Paper") {
+                    computerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else if (computerPick === "Scissors") {
+                    playerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else {
+                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                };
+                break;
+
+                case "paper": 
+                if (computerPick === "Scissors") {
+                    computerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else if (computerPick === "Rock") {
+                    playerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else {
+                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                };
+                break;
+
+                case "scissors": 
+                if (computerPick === "Rock") {
+                    computerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else if (computerPick === "Paper") {
+                    playerScore += 1;
+                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                } else {
+                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
+                };
+                break;
+            }
+
+        }
+
+        function playGame(playerPick) {
+            computerPlay();
+            checkWin(playerPick);
+        }
+    </script>
+</body>
+</html>
