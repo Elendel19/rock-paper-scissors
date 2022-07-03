@@ -11,8 +11,9 @@
         let playerScore = 0;
         let computerScore = 0;
         let computerPick = "";
-        function computerPlay() {
-            
+        
+        //Random roll for computer pick
+        function computerPlay() {    
             let randomRoll = Math.floor(Math.random() * 3) + 1;
             if (randomRoll === 1) {
                 computerPick = "Rock";
@@ -24,8 +25,8 @@
             return computerPick;
         };
 
-        function checkWin(playerPick) {
-            
+        //Decide win/lose and output result plus score
+        function checkWin(playerPick) { 
             let lowerCasePick = playerPick.toLowerCase();
             let result = lowerCasePick.charAt(0).toUpperCase() + lowerCasePick.slice(1);
             switch (lowerCasePick) {
@@ -67,7 +68,7 @@
             }
 
         }
-
+        //Play!
         function playGame(playerPick) {
             computerPlay();
             checkWin(playerPick);
