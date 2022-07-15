@@ -5,13 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+      <h1>Rock Paper Scissors</h1>
+      <div class="btnBox">
+        <div class="btn" id="rock">Rock</div>
+        <div class="btn" id="paper">Paper</div>
+        <div class="btn" id="scissors">Scissors</div>
+      </div>
+      <h2>Score</h2>
+      <div class="scoreBox">
+        <div>You:</div>
+        <div class="playScore">0</div>
+        <div>Computer</div>
+        <div class="compScore">0</div>
+        </div>
+      </div>
+    </div>
     <script>
         let playerScore = 0;
         let computerScore = 0;
         let computerPick = "";
         
+        const btn = document.querySelectorAll('.btn');
+        btn.forEach(btn => btn.addEventListener('click', function(e) {
+            playGame(this.id);
+            yourScore.textContent = `${playerScore}`;
+            cpuScore.textContent = `${computerScore}`;
+        }));
+
+        const yourScore = document.querySelector('.playScore');
+        const cpuScore = document.querySelector('.compScore');
         
         //Random roll for computer pick
         function computerPlay() {    
@@ -61,6 +87,7 @@
                     return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
                 } else if (computerPick === "Paper") {
                     playerScore += 1;
+                    
                     return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
                 } else {
                     return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
@@ -72,8 +99,8 @@
         
         //Play!
        let playerPick = ""
-        function playGame() {
-            playerPick = prompt("Rock, Paper or Scissors?")
+        function playGame(playerPick) {
+            //playerPick = prompt("Rock, Paper or Scissors?")
             computerPlay();
             checkWin(playerPick);
         }
