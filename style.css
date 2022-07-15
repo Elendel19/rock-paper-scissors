@@ -1,0 +1,32 @@
+.container {
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10%;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+
+
+.btnBox {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0px;
+    
+}
+
+.btn {
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+}
+
+.scoreBox {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 40px;
+}
