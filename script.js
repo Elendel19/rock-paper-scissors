@@ -18,8 +18,6 @@
             playerPlay.textContent = `${this.id}`;
             checkScore();   
         }));
-
-        
        
         function computerPlay() {    
             let randomRoll = Math.floor(Math.random() * 3) + 1;
