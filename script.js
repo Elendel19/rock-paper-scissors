@@ -2,23 +2,24 @@
         let playerScore = 0;
         let computerScore = 0;
         let computerPick = "";
-         let playerPick = "";
+        let playerPick = "";
          
+        const yourScore = document.querySelector('.playScore');
+        const cpuScore = document.querySelector('.compScore');
+        const playerPlay = document.querySelector('.player');
+        const compPlay = document.querySelector('.computer');
         const buttons = document.querySelectorAll('.button');
+
         buttons.forEach(button => button.addEventListener('click', function(e) {
             playGame(this.id);
             yourScore.textContent = `${playerScore}`;
             cpuScore.textContent = `${computerScore}`;
-            
-            computer.textContent = `${computerPick}`;
-            player.textContent = `${this.id}`;
-            
+            compPlay.textContent = `${computerPick}`;
+            playerPlay.textContent = `${this.id}`;
+            checkScore();   
         }));
 
-        const yourScore = document.querySelector('.playScore');
-        const cpuScore = document.querySelector('.compScore');
-        const player = document.querySelector('.player');
-        const computer = document.querySelector('.computer');
+        
        
         function computerPlay() {    
             let randomRoll = Math.floor(Math.random() * 3) + 1;
@@ -32,42 +33,35 @@
             return computerPick;
         };
 
-        
         function checkWin(playerPick) { 
-            let lowerCasePick = playerPick.toLowerCase();
-            let result = lowerCasePick.charAt(0).toUpperCase() + lowerCasePick.slice(1);
-            switch (lowerCasePick) {
-                case "rock": 
+            switch (playerPick) {
+                case "Rock": 
                 if (computerPick === "Paper") {
                     computerScore += 1;
                     return 
                 } else if (computerPick === "Scissors") {
                     playerScore += 1; 
                     return
-                } 
-                break;
+                } break;
 
-                case "paper": 
+                case "Paper": 
                 if (computerPick === "Scissors") {
                     computerScore += 1;
                     return;
                 } else if (computerPick === "Rock") {
                     playerScore += 1;
                     return
-                }
-                break;
-
-                case "scissors": 
+                } break;
+                
+                case "Scissors": 
                 if (computerPick === "Rock") {
                     computerScore += 1;
                     return;
                 } else if (computerPick === "Paper") {
                     playerScore += 1;  
                     return
-                } 
-                break;
+                } break;
             }
-
         }
 
         function checkScore() {
@@ -82,18 +76,9 @@
             } else return
         }
         
-        
-      
         function playGame(playerPick) {
             computerPlay();
             checkWin(playerPick);
-            checkScore();
         }
 
-        function fiveRounds() {
-            
-            for (let i = 0; i < 5; i++) {
-                playGame(playerPick);
-            }
-        }
    
