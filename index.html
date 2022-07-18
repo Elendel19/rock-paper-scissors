@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
-<body>
+<body> 
+   
+   
     <div class="container">
-      <h1>Rock Paper Scissors</h1>
+      
+        <h1>Rock Paper Scissors</h1>
       <div class="btnBox">
-        <div class="btn" id="Rock">Rock
+        <div class="button" id="Rock">Rock
             <img class="image" src="images/rock-icon.png">
         </div>
-        <div class="btn" id="Paper">Paper
+        <div class="button" id="Paper">Paper
             <img class="image" src="images/paper-icon.png">
         </div>
-        <div class="btn" id="Scissors">Scissors
+        <div class="button" id="Scissors">Scissors
             <img class="image" src="images/scissors-icon.png">
         </div>
       </div>
+
       <h2>Score</h2>
       <div class="scoreBox">
         <div class="score">You:</div>
@@ -29,113 +34,10 @@
         <div class="score compScore">0</div>
         <div class="score computer"></div>
         <div class="score">Computer</div>
-        
         </div>
-      </div>
+      
     </div>
-    <script>
-        let playerScore = 0;
-        let computerScore = 0;
-        let computerPick = "";
-        
-        const btns = document.querySelectorAll('.btn');
-        btns.forEach(btn => btn.addEventListener('click', function(e) {
-            playGame(this.id);
-            yourScore.textContent = `${playerScore}`;
-            cpuScore.textContent = `${computerScore}`;
-            computer.textContent = `${computerPick}`;
-            player.textContent = `${this.id}`;
-            
-        }));
-
-        const yourScore = document.querySelector('.playScore');
-        const cpuScore = document.querySelector('.compScore');
-        const player = document.querySelector('.player');
-        const computer = document.querySelector('.computer');
-        //Random roll for computer pick
-        function computerPlay() {    
-            let randomRoll = Math.floor(Math.random() * 3) + 1;
-            if (randomRoll === 1) {
-                computerPick = "Rock";
-            } else if (randomRoll === 2) {
-                computerPick = "Paper";
-            } else if (randomRoll === 3) {
-                computerPick = "Scissors"
-            } 
-            return computerPick;
-        };
-
-        //Decide win/lose and output result plus score
-        function checkWin(playerPick) { 
-            let lowerCasePick = playerPick.toLowerCase();
-            let result = lowerCasePick.charAt(0).toUpperCase() + lowerCasePick.slice(1);
-            switch (lowerCasePick) {
-                case "rock": 
-                if (computerPick === "Paper") {
-                    computerScore += 1;
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else if (computerPick === "Scissors") {
-                    playerScore += 1;
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else {
-                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                };
-                break;
-
-                case "paper": 
-                if (computerPick === "Scissors") {
-                    computerScore += 1;
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else if (computerPick === "Rock") {
-                    playerScore += 1;
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else {
-                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                };
-                break;
-
-                case "scissors": 
-                if (computerPick === "Rock") {
-                    computerScore += 1;
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Lose! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else if (computerPick === "Paper") {
-                    playerScore += 1;
-                    
-                    return console.log(`You: ${result} Computer: ${computerPick} \n You Win! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                } else {
-                    return console.log(`You: ${result} Computer: ${computerPick} \n It's a tie! \n Current Score: You ${playerScore}  Computer ${computerScore} `)
-                };
-                break;
-            }
-
-        }
-
-        function checkScore() {
-            if (playerScore === 5) {
-                alert("You win!");
-                playerScore = 0;
-                computerScore = 0;
-            } else if (computerScore === 5) {
-                alert("You lose!");
-                playerScore = 0;
-                computerScore = 0;
-            } else return
-        }
-        
-        //Play!
-       let playerPick = ""
-        function playGame(playerPick) {
-            computerPlay();
-            checkWin(playerPick);
-            checkScore();
-        }
-
-        function fiveRounds() {
-            
-            for (let i = 0; i < 5; i++) {
-                playGame(playerPick);
-            }
-        }
-    </script>
+    
+   <script src="script.js"></script>
 </body>
 </html>
